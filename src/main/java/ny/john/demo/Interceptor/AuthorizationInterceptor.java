@@ -32,7 +32,7 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
         for (String needLoginUri : needLoginUriArr) {
             if (request.getRequestURI().startsWith(needLoginUri) &&
                     (uidAttr == null || userDao.get(Integer.parseInt(uidAttr)) == null)) {
-                response.getWriter().write("{\"error\":\"you are not authorized to visit this page.\"}");//直接将完整的表单html输出到页面
+                response.getWriter().write("{\"error\":\"you are not authorized to visit this page.\"}");
                 response.getWriter().flush();
                 response.getWriter().close();
                 return false;

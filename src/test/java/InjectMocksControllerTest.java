@@ -45,9 +45,6 @@ public class InjectMocksControllerTest {
     private MockMvc mockMvc;
 
     @Resource
-    private WebApplicationContext context;
-
-    @Resource
     private DataSource dataSource;
 
     @Resource
@@ -98,8 +95,6 @@ public class InjectMocksControllerTest {
 
     @Test
     public void getTodayNoAuthorization() throws Exception {
-        mockUser();
-
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/weather/today")).andExpect(MockMvcResultMatchers.status().is2xxSuccessful()).andReturn();
         String response = result.getResponse().getContentAsString();
 

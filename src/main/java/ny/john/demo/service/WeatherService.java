@@ -15,7 +15,7 @@ import java.util.Map;
 @Service
 public class WeatherService {
 
-    public String getFromBaiduApi(String city) throws IOException {
+    private String getFromBaiduApi(String city) throws IOException {
         String urlStr = "http://api.map.baidu.com/telematics/v3/weather?";
 
         Map<String, String> params = new HashMap<>();

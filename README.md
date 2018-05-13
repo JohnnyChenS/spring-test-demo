@@ -1,6 +1,6 @@
 # spring-test-demo
 
-A Spring Junit test demo cover from controller layer.
+A Spring Test demo cover from controller layer.
 
 db initiate sql:
 ```
