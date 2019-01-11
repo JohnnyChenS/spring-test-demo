@@ -12,19 +12,16 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -37,10 +34,9 @@ import java.sql.SQLException;
  * @author <a href="chz0321@gmail.com">johnny</a>
  * @created on 2018/5/1.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+@RunWith(SpringRunner.class)
 @ContextConfiguration(locations = {"classpath:spring-test.xml"})
+@SpringBootTest
 public class InjectMocksControllerTest {
     private MockMvc mockMvc;
 
@@ -87,8 +83,7 @@ public class InjectMocksControllerTest {
     }
 
     @Before
-    public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
+    public void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(weatherController).addInterceptors(authorizationInterceptor).build();
         truncateData();
     }
