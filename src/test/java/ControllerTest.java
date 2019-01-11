@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -32,11 +33,13 @@ import java.sql.SQLException;
 @ContextConfiguration(locations = {"classpath:spring-test.xml"})
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@AutoConfigureMockMvc
 public class ControllerTest {
+    @Resource
     private MockMvc mockMvc;
 
-    @Resource
-    private WebApplicationContext context;
+//    @Resource
+//    private WebApplicationContext context;
 
     @Resource
     private DataSource dataSource;
@@ -72,7 +75,8 @@ public class ControllerTest {
 
     @Before
     public void setUp() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
+        //使用@AutoConfigureMockMvc注解可以自动生成上下文，省去显式赋值的方式
+//        mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
         truncateData();
     }
 
