@@ -1,3 +1,5 @@
+package ny.john.demo;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import ny.john.demo.dao.UserDao;
@@ -30,7 +32,7 @@ import java.sql.SQLException;
  * @author <a href="chz0321@gmail.com">johnny</a>
  * @created on 2018/5/1.
  */
-@ContextConfiguration(locations = {"classpath:spring-test.xml"})
+//@ContextConfiguration(locations = {"classpath:spring-test.xml"})
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc

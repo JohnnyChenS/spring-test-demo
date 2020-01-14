@@ -1,3 +1,5 @@
+package ny.john.demo;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import ny.john.demo.Interceptor.AuthorizationInterceptor;
@@ -35,7 +37,7 @@ import java.sql.SQLException;
  * @created on 2018/5/1.
  */
 @RunWith(SpringRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-test.xml"})
+//@ContextConfiguration(locations = {"classpath:spring-test.xml"})
 @SpringBootTest
 public class InjectMocksControllerTest {
     private MockMvc mockMvc;
